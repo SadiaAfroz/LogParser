@@ -16,15 +16,11 @@ public class Summary implements Comparable<Summary> {
 
     public Summary(int startTime) {
         this.startTime = startTime;
-        getCount = 0;
-        postCount = 0;
-        responseTimeTotal = 0;
-        uriList = new HashSet<String>();
+        this.uriList = new HashSet<String>();
 
     }
 
     public Summary() {
-        startTime = 0;
     }
 
     public int getStartTime() {
@@ -91,46 +87,37 @@ public class Summary implements Comparable<Summary> {
         return getCount + postCount;
     }
 
-    @Override
-    public String toString() {
-        String timeRange="";
+
+    public String getFormatedString() {
+        String timeRange = "";
         // for am timing
-        if(startTime>=1 && startTime<11){
-            timeRange+=startTime+":00 am - "+(startTime+1)+":00 am";
+        if (startTime >= 1 && startTime < 11) {
+            timeRange += startTime + ":00 am - " + (startTime + 1) + ":00 am";
         }
         //time=12am
-        else if(startTime==12){
-            timeRange+=startTime+":00 am"+" - 1:00 pm";
+        else if (startTime == 12) {
+            timeRange += startTime + ":00 am" + " - 1:00 pm";
         }
         // for pm timing
         else {
-            int time=startTime%12;
+            int time = startTime % 12;
             // time=24:00
-            if(time==0){
-                timeRange+="12:00 am"+" - 1:00 am";
-            }
-            else {
-                timeRange+=time+":00 pm - "+(time+1)+":00 pm";
+            if (time == 0) {
+                timeRange += "12:00 am" + " - 1:00 am";
+            } else {
+                timeRange += time + ":00 pm - " + (time + 1) + ":00 pm";
             }
         }
-
-//        return "Time= " + timeRange +
-//                ", getCount/postCount= " + getCount +
-//                "/" + postCount +
-//                ", responseTimeTotal= " + responseTimeTotal +
-//                ", uriList=" + uriList.size();
-
 
         return " " + timeRange +
                 "   " + getCount +
                 "/" + postCount +
                 "      " + uriList.size() +
-                "      " + responseTimeTotal+"ms";
+                "      " + responseTimeTotal + "ms";
     }
-
 
     @Override
     public int compareTo(Summary summary) {
-        return this.getGetPostCount()- summary.getGetPostCount();
+        return this.getGetPostCount() - summary.getGetPostCount();
     }
 }
