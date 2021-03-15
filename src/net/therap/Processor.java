@@ -4,7 +4,9 @@ import java.io.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static net.therap.LogParser.HOURS_IN_A_DAY;
+
+import static net.therap.PatternProcessor.HOURS_IN_A_DAY;
+import static net.therap.PatternProcessor.getCheck;
 
 /**
  * @author sadia.afroz
@@ -53,12 +55,12 @@ public class Processor {
                         String[] splittedInfo = m2.group().split(",");
 
                         String uri = splittedInfo[0].replaceAll(".*\\[|\\].*", "");
-                        String get_post = splittedInfo[1].trim();
+                        String getPost = splittedInfo[1].trim();
                         int responseTime = Integer.parseInt(splittedInfo[2].replaceAll(".*\\=|ms.*", ""));
 
                         summaries[startTime].addURI(uri);
                         summaries[startTime].incrementResponsetime(responseTime);
-                        if (get_post.equals("G")) {
+                        if (getPost.equals(getCheck)) {
                             summaries[startTime].incrementGetCount();
                         } else {
                             summaries[startTime].incrementPostCount();

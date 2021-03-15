@@ -67,8 +67,8 @@ public class Summary implements Comparable<Summary> {
         return uriList.size();
     }
 
-    public void addURI(String URI) {
-        uriList.add(URI);
+    public void addURI(String uri) {
+        uriList.add(uri);
     }
 
     public void incrementResponsetime(int value) {

@@ -7,8 +7,6 @@ import java.util.Arrays;
  * @since 3/10/21
  */
 public class LogParser {
-    public static final int HOURS_IN_A_DAY = 24;
-
     public static void main(String[] args) {
 
         boolean sortFlag = false;
