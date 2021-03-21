@@ -1,5 +1,4 @@
-package net.therap;
-
+package net.therap.model;
 
 import java.util.HashSet;
 
@@ -17,10 +16,6 @@ public class Summary implements Comparable<Summary> {
     public Summary(int startTime) {
         this.startTime = startTime;
         this.uriList = new HashSet<String>();
-
-    }
-
-    public Summary() {
     }
 
     public int getStartTime() {
@@ -85,35 +80,6 @@ public class Summary implements Comparable<Summary> {
 
     public int getGetPostCount() {
         return getCount + postCount;
-    }
-
-
-    public String getFormatedString() {
-        String timeRange = "";
-        // for am timing
-        if (startTime >= 1 && startTime < 11) {
-            timeRange += startTime + ":00 am - " + (startTime + 1) + ":00 am";
-        }
-        //time=12am
-        else if (startTime == 12) {
-            timeRange += startTime + ":00 am" + " - 1:00 pm";
-        }
-        // for pm timing
-        else {
-            int time = startTime % 12;
-            // time=24:00
-            if (time == 0) {
-                timeRange += "12:00 am" + " - 1:00 am";
-            } else {
-                timeRange += time + ":00 pm - " + (time + 1) + ":00 pm";
-            }
-        }
-
-        return " " + timeRange +
-                "   " + getCount +
-                "/" + postCount +
-                "      " + uriList.size() +
-                "      " + responseTimeTotal + "ms";
     }
 
     @Override
