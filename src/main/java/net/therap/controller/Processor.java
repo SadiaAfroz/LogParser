@@ -17,7 +17,9 @@ import static net.therap.controller.PatternProcessor.getCheck;
  */
 public class Processor {
     private String fileName;
-    static final String URI = "URI=[";
+    private String URI = "URI=[";
+    private String uriExcludedPart = ".*\\[|\\].*";
+    private String timeExcludedPart = ".*\\=|ms.*";
 
     public Processor(String fileName) {
         this.fileName = fileName;
@@ -73,9 +75,9 @@ public class Processor {
                 if (m2.find()) {
                     String[] splittedInfo = m2.group().split(",");
 
-                    String uri = splittedInfo[0].replaceAll(".*\\[|\\].*", "");
+                    String uri = splittedInfo[0].replaceAll(uriExcludedPart, "");
                     String getPost = splittedInfo[1].trim();
-                    int responseTime = Integer.parseInt(splittedInfo[2].replaceAll(".*\\=|ms.*", ""));
+                    int responseTime = Integer.parseInt(splittedInfo[2].replaceAll(timeExcludedPart, ""));
                     summaries[startTime].addURI(uri);
                     summaries[startTime].incrementResponsetime(responseTime);
 

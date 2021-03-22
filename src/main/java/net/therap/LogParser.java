@@ -1,5 +1,6 @@
-package net.therap.controller;
+package net.therap;
 
+import net.therap.controller.Processor;
 import net.therap.model.LogInfo;
 import net.therap.model.Summary;
 import net.therap.view.LogView;

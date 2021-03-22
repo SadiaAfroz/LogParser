@@ -1,6 +1,7 @@
 package net.therap.model;
 
 import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author sadia.afroz
@@ -11,7 +12,7 @@ public class Summary implements Comparable<Summary> {
     private int getCount;
     private int postCount;
     private int responseTimeTotal;
-    private HashSet<String> uriList;
+    private Set<String> uriList;
 
     public Summary(int startTime) {
         this.startTime = startTime;
@@ -50,7 +51,7 @@ public class Summary implements Comparable<Summary> {
         this.responseTimeTotal = responseTimeTotal;
     }
 
-    public HashSet<String> getUriList() {
+    public Set<String> getUriList() {
         return uriList;
     }
 
